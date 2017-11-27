@@ -1,0 +1,91 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NWNCX Sinfar", "plugins\sinfar\sinfar.vcxproj", "{C3B216EF-0DCA-45F7-A83E-5921E0003109}"
+	ProjectSection(ProjectDependencies) = postProject
+		{50EDA056-45B2-44D9-81C4-70CB292D178B} = {50EDA056-45B2-44D9-81C4-70CB292D178B}
+		{02F28463-E56F-4AC4-858B-C6B89EF02642} = {02F28463-E56F-4AC4-858B-C6B89EF02642}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sinfar NWN Launcher", "Sinfar NWN Launcher\Sinfar NWN Launcher.vcxproj", "{FF817BC4-B862-4C16-9FF8-9514013A69CC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E89CB40D-FE23-4934-924B-28DC311F1E7F} = {E89CB40D-FE23-4934-924B-28DC311F1E7F}
+		{0263A052-CEE4-49F9-81BA-59AE23BE1A31} = {0263A052-CEE4-49F9-81BA-59AE23BE1A31}
+		{4387FE7D-60D5-46F0-9868-65470936E518} = {4387FE7D-60D5-46F0-9868-65470936E518}
+		{833E26A5-4054-4C7F-AFED-C4280E119445} = {833E26A5-4054-4C7F-AFED-C4280E119445}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libcurl", "libcurl\libcurl.vcxproj", "{0263A052-CEE4-49F9-81BA-59AE23BE1A31}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libjson", "libjson\libjson.vcxproj", "{4387FE7D-60D5-46F0-9868-65470936E518}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libcrypto", "libcrypto\libcrypto.vcxproj", "{833E26A5-4054-4C7F-AFED-C4280E119445}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libdetours", "libdetours\libdetours.vcxproj", "{50EDA056-45B2-44D9-81C4-70CB292D178B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "crypt_test", "crypt_test\crypt_test.vcxproj", "{1FD344B9-58EF-4242-8384-99BC8DEE9A76}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test_misc", "test_misc\test_misc.vcxproj", "{159936D0-0BBA-4CA2-827A-07F4B6AF088F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnitTests", "UnitTests\UnitTests.vcxproj", "{F1A8FBBC-3AAA-4ED7-BD62-8FEA6ADB0460}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NWN Launcher Lib", "NWN Launcher Lib\NWN Launcher Lib.vcxproj", "{E89CB40D-FE23-4934-924B-28DC311F1E7F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SinfarXLib", "SinfarXLib\SinfarXLib.vcxproj", "{02F28463-E56F-4AC4-858B-C6B89EF02642}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C3B216EF-0DCA-45F7-A83E-5921E0003109}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C3B216EF-0DCA-45F7-A83E-5921E0003109}.Debug|Win32.Build.0 = Debug|Win32
+		{C3B216EF-0DCA-45F7-A83E-5921E0003109}.Release|Win32.ActiveCfg = Release|Win32
+		{C3B216EF-0DCA-45F7-A83E-5921E0003109}.Release|Win32.Build.0 = Release|Win32
+		{FF817BC4-B862-4C16-9FF8-9514013A69CC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{FF817BC4-B862-4C16-9FF8-9514013A69CC}.Debug|Win32.Build.0 = Debug|Win32
+		{FF817BC4-B862-4C16-9FF8-9514013A69CC}.Release|Win32.ActiveCfg = Release|Win32
+		{FF817BC4-B862-4C16-9FF8-9514013A69CC}.Release|Win32.Build.0 = Release|Win32
+		{0263A052-CEE4-49F9-81BA-59AE23BE1A31}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0263A052-CEE4-49F9-81BA-59AE23BE1A31}.Debug|Win32.Build.0 = Debug|Win32
+		{0263A052-CEE4-49F9-81BA-59AE23BE1A31}.Release|Win32.ActiveCfg = Release|Win32
+		{0263A052-CEE4-49F9-81BA-59AE23BE1A31}.Release|Win32.Build.0 = Release|Win32
+		{4387FE7D-60D5-46F0-9868-65470936E518}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4387FE7D-60D5-46F0-9868-65470936E518}.Debug|Win32.Build.0 = Debug|Win32
+		{4387FE7D-60D5-46F0-9868-65470936E518}.Release|Win32.ActiveCfg = Release|Win32
+		{4387FE7D-60D5-46F0-9868-65470936E518}.Release|Win32.Build.0 = Release|Win32
+		{833E26A5-4054-4C7F-AFED-C4280E119445}.Debug|Win32.ActiveCfg = Debug|Win32
+		{833E26A5-4054-4C7F-AFED-C4280E119445}.Debug|Win32.Build.0 = Debug|Win32
+		{833E26A5-4054-4C7F-AFED-C4280E119445}.Release|Win32.ActiveCfg = Release|Win32
+		{833E26A5-4054-4C7F-AFED-C4280E119445}.Release|Win32.Build.0 = Release|Win32
+		{50EDA056-45B2-44D9-81C4-70CB292D178B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{50EDA056-45B2-44D9-81C4-70CB292D178B}.Debug|Win32.Build.0 = Debug|Win32
+		{50EDA056-45B2-44D9-81C4-70CB292D178B}.Release|Win32.ActiveCfg = Release|Win32
+		{50EDA056-45B2-44D9-81C4-70CB292D178B}.Release|Win32.Build.0 = Release|Win32
+		{1FD344B9-58EF-4242-8384-99BC8DEE9A76}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1FD344B9-58EF-4242-8384-99BC8DEE9A76}.Debug|Win32.Build.0 = Debug|Win32
+		{1FD344B9-58EF-4242-8384-99BC8DEE9A76}.Release|Win32.ActiveCfg = Release|Win32
+		{1FD344B9-58EF-4242-8384-99BC8DEE9A76}.Release|Win32.Build.0 = Release|Win32
+		{159936D0-0BBA-4CA2-827A-07F4B6AF088F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{159936D0-0BBA-4CA2-827A-07F4B6AF088F}.Debug|Win32.Build.0 = Debug|Win32
+		{159936D0-0BBA-4CA2-827A-07F4B6AF088F}.Release|Win32.ActiveCfg = Release|Win32
+		{159936D0-0BBA-4CA2-827A-07F4B6AF088F}.Release|Win32.Build.0 = Release|Win32
+		{F1A8FBBC-3AAA-4ED7-BD62-8FEA6ADB0460}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F1A8FBBC-3AAA-4ED7-BD62-8FEA6ADB0460}.Debug|Win32.Build.0 = Debug|Win32
+		{F1A8FBBC-3AAA-4ED7-BD62-8FEA6ADB0460}.Release|Win32.ActiveCfg = Release|Win32
+		{F1A8FBBC-3AAA-4ED7-BD62-8FEA6ADB0460}.Release|Win32.Build.0 = Release|Win32
+		{E89CB40D-FE23-4934-924B-28DC311F1E7F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E89CB40D-FE23-4934-924B-28DC311F1E7F}.Debug|Win32.Build.0 = Debug|Win32
+		{E89CB40D-FE23-4934-924B-28DC311F1E7F}.Release|Win32.ActiveCfg = Release|Win32
+		{E89CB40D-FE23-4934-924B-28DC311F1E7F}.Release|Win32.Build.0 = Release|Win32
+		{02F28463-E56F-4AC4-858B-C6B89EF02642}.Debug|Win32.ActiveCfg = Debug|Win32
+		{02F28463-E56F-4AC4-858B-C6B89EF02642}.Debug|Win32.Build.0 = Debug|Win32
+		{02F28463-E56F-4AC4-858B-C6B89EF02642}.Release|Win32.ActiveCfg = Release|Win32
+		{02F28463-E56F-4AC4-858B-C6B89EF02642}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

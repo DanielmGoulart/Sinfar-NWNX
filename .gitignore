@@ -4,3 +4,8 @@ Makefile
 *.so
 *.a
 CMakeCache.txt
+.vs
+Debug
+Release
+.db
+.opendb
