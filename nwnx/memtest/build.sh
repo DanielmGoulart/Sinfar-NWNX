@@ -1,0 +1,1 @@
+g++ -g -m32 -std=gnu++0x -ldl -I "../common" -shared -o memtest.so memtest.cpp
