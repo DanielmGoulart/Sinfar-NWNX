@@ -1,0 +1,546 @@
+const int ARMOR_PART_EXTRA_INFO_COLOR_MAPPING =      0x01;
+const int ARMOR_PART_EXTRA_INFO_SHADOW_MOD =         0x02;
+const int ARMOR_PART_EXTRA_INFO_SCALE =              0x04;
+const int ARMOR_PART_EXTRA_INFO_MOVEX =              0x08;
+const int ARMOR_PART_EXTRA_INFO_MOVEY =              0x10;
+const int ARMOR_PART_EXTRA_INFO_MOVEZ =              0x20;
+const int ARMOR_PART_EXTRA_INFO_COLORSOVERRIDE =     0x40;
+const int ARMOR_PART_EXTRA_INFO_ROTATEX =            0x0100;
+const int ARMOR_PART_EXTRA_INFO_ROTATEY =            0x0200;
+const int ARMOR_PART_EXTRA_INFO_ROTATEZ =            0x0400;
+const int ARMOR_PART_EXTRA_INFO_RGBAOVERRIDE =       0x0800;
+
+const float DEGREE_PER_RADIAN = 57.2957795;
+
+const int RGBA_RED = 0;
+const int RGBA_GREEN = 1;
+const int RGBA_BLUE = 2;
+const int RGBA_ALPHA = 3;
+
+const int DURATION_TYPE_INNATE = 4;
+const int DURATION_TYPE_EQUIPPED = 3;
+
+const int SERVOPT_TYPE_TEXT = 3;
+const int SERVOPT_TYPE_TAG = 4;
+const int SERVOPT_TYPE_RESREF = 5;
+
+const int ITEM_XDATA_PART_ALL = 0;
+const int ITEM_XDATA_PART_TOP = 1;
+const int ITEM_XDATA_PART_MIDDLE = 2;
+const int ITEM_XDATA_PART_BOTTOM = 3;
+
+const int OBJECT_TYPE_SOUND = 0x0200;
+const int OBJECT_TYPE_AREA = 0x0400;
+const int OBJECT_TYPE_MODULE = 0x0800;
+
+const int DOOR_OPEN_STATE_CLOSED = 0;
+const int DOOR_OEN_STATE_OPEN1 = 1;
+const int DOOR_OEN_STATE_OPEN2 = 2;
+const int DOOR_OEN_STATE_DESTROYED = 2;
+
+const int X_EVENT_TIMED_EVENT = 1;
+const int X_EVENT_ENTERED_TRIGGER = 2;
+const int X_EVENT_LEFT_TRIGGER = 3;
+const int X_EVENT_REMOVE_FROM_AREA = 4;
+const int X_EVENT_APPLY_EFFECT = 5;
+const int X_EVENT_CLOSE_OBJECT = 6;
+const int X_EVENT_OPEN_OBJECT = 7;
+const int X_EVENT_SPELL_IMPACT = 8;
+const int X_EVENT_PLAY_ANIMATION = 9;
+const int X_EVENT_SIGNAL_EVENT = 10;
+const int X_EVENT_DESTROY_OBJECT = 11;
+const int X_EVENT_UNLOCK_OBJECT = 12;
+const int X_EVENT_LOCK_OBJECT = 13;
+const int X_EVENT_REMOVE_EFFECT = 14;
+const int X_EVENT_ON_MELEE_ATTACKED = 15;
+const int X_EVENT_DECREMENT_STACKSIZE = 16;
+const int X_EVENT_SPAWN_BODY_BAG = 17;
+const int X_EVENT_FORCED_ACTION = 18;
+const int X_EVENT_ITEM_ON_HIT_SPELL_IMPACT = 19;
+const int X_EVENT_BROADCAST_AOO = 20;
+const int X_EVENT_BROADCAST_SAFE_PROJECTILE = 21;
+const int X_EVENT_FEEDBACK_MESSAGE = 22;
+const int X_EVENT_ABILITY_EFFECT_APPLIED = 23;
+const int X_EVENT_SUMMON_CREATURE = 24;
+const int X_EVENT_ACQUIRE_ITEM = 25;
+const int X_EVENT_WHIRLWIND_ATTACK = 26;
+const int X_EVENT_BOOT_PC = 27;
+const int X_EVENT_ALL = 0;
+
+const int CHAT_CHANNEL_TALK = 1;
+const int CHAT_CHANNEL_SHOUT = 2;
+const int CHAT_CHANNEL_WHISPER = 3;
+const int CHAT_CHANNEL_TELL = 4;
+const int CHAT_CHANNEL_DM = 5;
+const int CHAT_CHANNEL_PARTY = 6;
+
+const int CREATURE_SCRIPT_HEARTBEAT       = 0;
+const int CREATURE_SCRIPT_PERCEPTION      = 1;
+const int CREATURE_SCRIPT_SPELLCAST_AT    = 2;
+const int CREATURE_SCRIPT_ATTACKED        = 3;
+const int CREATURE_SCRIPT_DAMAGED         = 4;
+const int CREATURE_SCRIPT_DISTURBED       = 5;
+const int CREATURE_SCRIPT_COMBAT_ROUND    = 6;
+const int CREATURE_SCRIPT_CONVERSATION    = 7;
+const int CREATURE_SCRIPT_SPAWN           = 8;
+const int CREATURE_SCRIPT_RESTED          = 9;
+const int CREATURE_SCRIPT_DEATH           = 10;
+const int CREATURE_SCRIPT_USER_DEFINED    = 11;
+const int CREATURE_SCRIPT_BLOCKED         = 12;
+
+const int PLACEABLE_SCRIPT_CLOSE          = 0;
+const int PLACEABLE_SCRIPT_DAMAGE         = 1;
+const int PLACEABLE_SCRIPT_DEATH          = 2;
+const int PLACEABLE_SCRIPT_HEARTBEAT      = 4;
+const int PLACEABLE_SCRIPT_DISTURBED      = 5;
+const int PLACEABLE_SCRIPT_LOCK           = 6;
+const int PLACEABLE_SCRIPT_ATTACKED       = 7;
+const int PLACEABLE_SCRIPT_OPEN           = 8;
+const int PLACEABLE_SCRIPT_SPELLCAST_AT   = 9;
+const int PLACEABLE_SCRIPT_UNLOCK         = 11;
+const int PLACEABLE_SCRIPT_USED           = 12;
+const int PLACEABLE_SCRIPT_USER_DEFINED   = 13;
+const int PLACEABLE_SCRIPT_CLICK          = 15;
+
+const int MODULE_SCRIPT_HEARTBEAT         = 0;
+const int MODULE_SCRIPT_USER_DEFINED      = 1;
+const int MODULE_SCRIPT_LOAD              = 2;
+const int MODULE_SCRIPT_CLIENT_ENTER      = 4;
+const int MODULE_SCRIPT_CLIENT_LEAVE      = 5;
+const int MODULE_SCRIPT_ACTIVATE_ITEM     = 6;
+const int MODULE_SCRIPT_ACQURATE_ITEM     = 7;
+const int MODULE_SCRIPT_UNACQURATE_ITEM   = 8;
+const int MODULE_SCRIPT_PLAYER_DEATH      = 9;
+const int MODULE_SCRIPT_PLAYER_DYING      = 10;
+const int MODULE_SCRIPT_PLAYER_RESPAWN    = 11;
+const int MODULE_SCRIPT_PLAYER_REST       = 12;
+const int MODULE_SCRIPT_PLAYER_LEVELUP    = 13;
+const int MODULE_SCRIPT_CURSCENE_ABORT    = 14;
+const int MODULE_SCRIPT_EQUIP_ITEM        = 15;
+const int MODULE_SCRIPT_UNEQUIP_ITEM      = 16;
+const int MODULE_SCRIPT_PLAYER_CHAT       = 17;
+
+const int AREA_SCRIPT_HEARTBEAT           = 0;
+const int AREA_SCRIPT_USER_DEFINED        = 1;
+const int AREA_SCRIPT_ENTER               = 2;
+const int AREA_SCRIPT_EXIT                = 3;
+
+const int AOE_SCRIPT_HEARTBEAT            = 0;
+const int AOE_SCRIPT_ENTER                = 2;
+const int AOE_SCRIPT_EXIT                 = 3;
+
+const int DOOR_SCRIPT_OPEN                = 0;
+const int DOOR_SCRIPT_CLOSE               = 1;
+const int DOOR_SCRIPT_DAMAGED             = 2;
+const int DOOR_SCRIPT_DEATH               = 3;
+const int DOOR_SCRIPT_HEARTBEAT           = 5;
+const int DOOR_SCRIPT_LOCKED              = 6;
+const int DOOR_SCRIPT_ATTACKED            = 7;
+const int DOOR_SCRIPT_SPELCAST_AT         = 8;
+const int DOOR_SCRIPT_UNLOCKED            = 10;
+const int DOOR_SCRIPT_USER_DEFINED        = 11;
+const int DOOR_SCRIPT_TRANSITION_CLICK    = 12;
+const int DOOR_SCRIPT_FAIL_TO_OPEN        = 14;
+
+const int STORE_SCRIPT_OPEN               = 0;
+const int STORE_SCRIPT_CLOSE              = 1;
+
+const int TRIGGER_SCRIPT_HEARTBEAT        = 0;
+const int TRIGGER_SCRIPT_ENTER            = 1;
+const int TRIGGER_SCRIPT_EXIT             = 2;
+const int TRIGGER_SCRIPT_USER_DEFINED     = 3;
+const int TRIGGER_SCRIPT_TRANSITION_CLICK = 6;
+
+const int ENCOUNTER_SCRIPT_ENTER          = 0;
+const int ENCOUNTER_SCRIPT_EXIT           = 1;
+const int ENCOUNTER_SCRIPT_HEARTBEAT      = 2;
+const int ENCOUNTER_SCRIPT_EXHAUSTED      = 3;
+const int ENCOUNTER_SCRIPT_USER_DEFINED   = 4;
+
+const int PVP_SETTING_NONE = 0;
+const int PVP_SETTING_PARTY = 1;
+const int PVP_SETTING_FULL = 2;
+
+const int SERVSETTING_MAX_PLAYERS = 1001;
+const int SERVSETTING_PVP_SETTING = 57;
+const int SERVSETTING_PAUSE_AND_PLAY = 58;
+const int SERVSETTING_ONLY_ONE_PARTY = 59;
+const int SERVSETTING_ELC = 60;
+const int SERVSETTING_ILR = 61;
+//const int SERVSETTING_CD_BANNED_BEHAVIOR = 62;
+const int SERVSETTING_DISALLOW_SHOUTING = 63;
+const int SERVSETTING_SHOW_DM_JOINED = 64;
+//const int SERVSETTING_BACKUP_SAVED_CHARS = 65;
+const int SERVSETTING_SAVES_FAILURE_ON_1 = 66;
+const int SERVSETTING_VALIDATE_SPELLS = 67;
+const int SERVSETTING_EXAMINE_EFFECTS_ON_CREATURES = 68;
+const int SERVSETTING_EXAMINE_CR_ON_CREATURES = 69;
+const int SERVSETTING_MAX_HIT_POINTS = 70;
+const int SERVSETTING_RESTORE_SPELL_USE = 71;
+//const int SERVSETTING_ALWAYS_RESET_ENCOUNTERS = 72;
+const int SERVSETTING_HIDE_HIT_POINTS_GAINED = 73;
+
+const int SERVSETTING_STR_DESCRIPTION = 1;
+const int SERVSETTING_STR_PLAYER_PASSWORD = 2;
+
+const int SERVSETTING_FLOAT_MIN_HIPS_DISTANCE = 1;
+
+const int EFFECT_ICON_DAMAGE_RESISTANCE                         =   1;
+const int EFFECT_ICON_REGENERATE                                =   2;
+const int EFFECT_ICON_DAMAGE_REDUCTION                          =   3;
+const int EFFECT_ICON_TEMPORARY_HITPOINTS                       =   4;
+const int EFFECT_ICON_ENTANGLE                                  =   5;
+const int EFFECT_ICON_INVULNERABLE                              =   6;
+const int EFFECT_ICON_DEAF                                      =   7;
+const int EFFECT_ICON_FATIGUE                                   =   8;
+const int EFFECT_ICON_IMMUNITY                                  =   9;
+const int EFFECT_ICON_BLIND                                     =  10;
+const int EFFECT_ICON_ENEMY_ATTACK_BONUS                        =  11;
+const int EFFECT_ICON_CHARMED                                   =  12;
+const int EFFECT_ICON_CONFUSED                                  =  13;
+const int EFFECT_ICON_FRIGHTENED                                =  14;
+const int EFFECT_ICON_DOMINATED                                 =  15;
+const int EFFECT_ICON_PARALYZE                                  =  16;
+const int EFFECT_ICON_DAZED                                     =  17;
+const int EFFECT_ICON_STUNNED                                   =  18;
+const int EFFECT_ICON_SLEEP                                     =  19;
+const int EFFECT_ICON_POISON                                    =  20;
+const int EFFECT_ICON_DISEASE                                   =  21;
+const int EFFECT_ICON_CURSE                                     =  22;
+const int EFFECT_ICON_SILENCE                                   =  23;
+const int EFFECT_ICON_TURNED                                    =  24;
+const int EFFECT_ICON_HASTE                                     =  25;
+const int EFFECT_ICON_SLOW                                      =  26;
+const int EFFECT_ICON_ABILITY_INCREASE_STR                      =  27;
+const int EFFECT_ICON_ABILITY_DECREASE_STR                      =  28;
+const int EFFECT_ICON_ATTACK_INCREASE                           =  29;
+const int EFFECT_ICON_ATTACK_DECREASE                           =  30;
+const int EFFECT_ICON_DAMAGE_INCREASE                           =  31;
+const int EFFECT_ICON_DAMAGE_DECREASE                           =  32;
+const int EFFECT_ICON_DAMAGE_IMMUNITY_INCREASE                  =  33;
+const int EFFECT_ICON_DAMAGE_IMMUNITY_DECREASE                  =  34;
+const int EFFECT_ICON_AC_INCREASE                               =  35;
+const int EFFECT_ICON_AC_DECREASE                               =  36;
+const int EFFECT_ICON_MOVEMENT_SPEED_INCREASE                   =  37;
+const int EFFECT_ICON_MOVEMENT_SPEED_DECREASE                   =  38;
+const int EFFECT_ICON_SAVING_THROW_INCREASE                     =  39;
+const int EFFECT_ICON_SAVING_THROW_DECREASE                     =  40;
+const int EFFECT_ICON_SPELL_RESISTANCE_INCREASE                 =  41;
+const int EFFECT_ICON_SPELL_RESISTANCE_DECREASE                 =  42;
+const int EFFECT_ICON_SKILL_INCREASE                            =  43;
+const int EFFECT_ICON_SKILL_DECREASE                            =  44;
+const int EFFECT_ICON_INVISIBILITY                              =  45;
+const int EFFECT_ICON_IMPROVEDINVISIBILITY                      =  46;
+const int EFFECT_ICON_DARKNESS                                  =  47;
+const int EFFECT_ICON_DISPELMAGICALL                            =  48;
+const int EFFECT_ICON_ELEMENTALSHIELD                           =  49;
+const int EFFECT_ICON_LEVELDRAIN                                =  50;
+const int EFFECT_ICON_POLYMORPH                                 =  51;
+const int EFFECT_ICON_SANCTUARY                                 =  52;
+const int EFFECT_ICON_TRUESEEING                                =  53;
+const int EFFECT_ICON_SEEINVISIBILITY                           =  54;
+const int EFFECT_ICON_TIMESTOP                                  =  55;
+const int EFFECT_ICON_BLINDNESS                                 =  56;
+const int EFFECT_ICON_SPELLLEVELABSORPTION                      =  57;
+const int EFFECT_ICON_DISPELMAGICBEST                           =  58;
+const int EFFECT_ICON_ABILITY_INCREASE_DEX                      =  59;
+const int EFFECT_ICON_ABILITY_DECREASE_DEX                      =  60;
+const int EFFECT_ICON_ABILITY_INCREASE_CON                      =  61;
+const int EFFECT_ICON_ABILITY_DECREASE_CON                      =  62;
+const int EFFECT_ICON_ABILITY_INCREASE_INT                      =  63;
+const int EFFECT_ICON_ABILITY_DECREASE_INT                      =  64;
+const int EFFECT_ICON_ABILITY_INCREASE_WIS                      =  65;
+const int EFFECT_ICON_ABILITY_DECREASE_WIS                      =  66;
+const int EFFECT_ICON_ABILITY_INCREASE_CHA                      =  67;
+const int EFFECT_ICON_ABILITY_DECREASE_CHA                      =  68;
+const int EFFECT_ICON_IMMUNITY_ALL                              =  69;
+const int EFFECT_ICON_IMMUNITY_MIND                             =  70;
+const int EFFECT_ICON_IMMUNITY_POISON                           =  71;
+const int EFFECT_ICON_IMMUNITY_DISEASE                          =  72;
+const int EFFECT_ICON_IMMUNITY_FEAR                             =  73;
+const int EFFECT_ICON_IMMUNITY_TRAP                             =  74;
+const int EFFECT_ICON_IMMUNITY_PARALYSIS                        =  75;
+const int EFFECT_ICON_IMMUNITY_BLINDNESS                        =  76;
+const int EFFECT_ICON_IMMUNITY_DEAFNESS                         =  77;
+const int EFFECT_ICON_IMMUNITY_SLOW                             =  78;
+const int EFFECT_ICON_IMMUNITY_ENTANGLE                         =  79;
+const int EFFECT_ICON_IMMUNITY_SILENCE                          =  80;
+const int EFFECT_ICON_IMMUNITY_STUN                             =  81;
+const int EFFECT_ICON_IMMUNITY_SLEEP                            =  82;
+const int EFFECT_ICON_IMMUNITY_CHARM                            =  83;
+const int EFFECT_ICON_IMMUNITY_DOMINATE                         =  84;
+const int EFFECT_ICON_IMMUNITY_CONFUSE                          =  85;
+const int EFFECT_ICON_IMMUNITY_CURSE                            =  86;
+const int EFFECT_ICON_IMMUNITY_DAZED                            =  87;
+const int EFFECT_ICON_IMMUNITY_ABILITY_DECREASE                 =  88;
+const int EFFECT_ICON_IMMUNITY_ATTACK_DECREASE                  =  89;
+const int EFFECT_ICON_IMMUNITY_DAMAGE_DECREASE                  =  90;
+const int EFFECT_ICON_IMMUNITY_DAMAGE_IMMUNITY_DECREASE         =  91;
+const int EFFECT_ICON_IMMUNITY_AC_DECREASE                      =  92;
+const int EFFECT_ICON_IMMUNITY_MOVEMENT_SPEED_DECREASE          =  93;
+const int EFFECT_ICON_IMMUNITY_SAVING_THROW_DECREASE            =  94;
+const int EFFECT_ICON_IMMUNITY_SPELL_RESISTANCE_DECREASE        =  95;
+const int EFFECT_ICON_IMMUNITY_SKILL_DECREASE                   =  96;
+const int EFFECT_ICON_IMMUNITY_KNOCKDOWN                        =  97;
+const int EFFECT_ICON_IMMUNITY_NEGATIVE_LEVEL                   =  98;
+const int EFFECT_ICON_IMMUNITY_SNEAK_ATTACK                     =  99;
+const int EFFECT_ICON_IMMUNITY_CRITICAL_HIT                     = 100;
+const int EFFECT_ICON_IMMUNITY_DEATH_MAGIC                      = 101;
+const int EFFECT_ICON_REFLEX_SAVE_INCREASED                     = 102;
+const int EFFECT_ICON_FORT_SAVE_INCREASED                       = 103;
+const int EFFECT_ICON_WILL_SAVE_INCREASED                       = 104;
+const int EFFECT_ICON_TAUNTED                                   = 105;
+const int EFFECT_ICON_SPELLIMMUNITY                             = 106;
+const int EFFECT_ICON_ETHEREALNESS                              = 107;
+const int EFFECT_ICON_CONCEALMENT                               = 108;
+const int EFFECT_ICON_PETRIFIED                                 = 109;
+const int EFFECT_ICON_SPELL_FAILURE                             = 110;
+const int EFFECT_ICON_DAMAGE_IMMUNITY_MAGIC                     = 111;
+const int EFFECT_ICON_DAMAGE_IMMUNITY_ACID                      = 112;
+const int EFFECT_ICON_DAMAGE_IMMUNITY_COLD                      = 113;
+const int EFFECT_ICON_DAMAGE_IMMUNITY_DIVINE                    = 114;
+const int EFFECT_ICON_DAMAGE_IMMUNITY_ELECTRICAL                = 115;
+const int EFFECT_ICON_DAMAGE_IMMUNITY_FIRE                      = 116;
+const int EFFECT_ICON_DAMAGE_IMMUNITY_NEGATIVE                  = 117;
+const int EFFECT_ICON_DAMAGE_IMMUNITY_POSITIVE                  = 118;
+const int EFFECT_ICON_DAMAGE_IMMUNITY_SONIC                     = 119;
+const int EFFECT_ICON_DAMAGE_IMMUNITY_MAGIC_DECREASE            = 120;
+const int EFFECT_ICON_DAMAGE_IMMUNITY_ACID_DECREASE             = 121;
+const int EFFECT_ICON_DAMAGE_IMMUNITY_COLD_DECREASE             = 122;
+const int EFFECT_ICON_DAMAGE_IMMUNITY_DIVINE_DECREASE           = 123;
+const int EFFECT_ICON_DAMAGE_IMMUNITY_ELECTRICAL_DECREASE       = 124;
+const int EFFECT_ICON_DAMAGE_IMMUNITY_FIRE_DECREASE             = 125;
+const int EFFECT_ICON_DAMAGE_IMMUNITY_NEGATIVE_DECREASE         = 126;
+const int EFFECT_ICON_DAMAGE_IMMUNITY_POSITIVE_DECREASE         = 127;
+const int EFFECT_ICON_DAMAGE_IMMUNITY_SONIC_DECREASE            = 128;
+const int EFFECT_ICON_WOUNDING                                  = 129;
+
+const int EFFECT_STATE_CHARMED                                  =   1;
+const int EFFECT_STATE_CONFUSED                                 =   2;
+const int EFFECT_STATE_FRIGHTENED                               =   3;
+const int EFFECT_STATE_TURNED                                   =   4;
+const int EFFECT_STATE_DAZED                                    =   5;
+const int EFFECT_STATE_STUNNED                                  =   6;
+const int EFFECT_STATE_DOMINATED                                =   7;
+const int EFFECT_STATE_PARALYZE                                 =   8;
+const int EFFECT_STATE_SLEEP                                    =   9;
+
+const int EFFECT_TRUETYPE_INVALIDEFFECT                         =   0;
+const int EFFECT_TRUETYPE_HASTE                                 =   1;
+const int EFFECT_TRUETYPE_DAMAGE_RESISTANCE                     =   2;
+const int EFFECT_TRUETYPE_SLOW                                  =   3;
+const int EFFECT_TRUETYPE_RESURRECTION                          =   4;
+const int EFFECT_TRUETYPE_DISEASE                               =   5;
+const int EFFECT_TRUETYPE_SUMMON_CREATURE                       =   6;
+const int EFFECT_TRUETYPE_REGENERATE                            =   7;
+const int EFFECT_TRUETYPE_SETSTATE                              =   8;
+const int EFFECT_TRUETYPE_SETSTATE_INTERNAL                     =   9;
+const int EFFECT_TRUETYPE_ATTACK_INCREASE                       =  10;
+const int EFFECT_TRUETYPE_ATTACK_DECREASE                       =  11;
+const int EFFECT_TRUETYPE_DAMAGE_REDUCTION                      =  12;
+const int EFFECT_TRUETYPE_DAMAGE_INCREASE                       =  13;
+const int EFFECT_TRUETYPE_DAMAGE_DECREASE                       =  14;
+const int EFFECT_TRUETYPE_TEMPORARY_HITPOINTS                   =  15;
+const int EFFECT_TRUETYPE_DAMAGE_IMMUNITY_INCREASE              =  16;
+const int EFFECT_TRUETYPE_DAMAGE_IMMUNITY_DECREASE              =  17;
+const int EFFECT_TRUETYPE_ENTANGLE                              =  18;
+const int EFFECT_TRUETYPE_DEATH                                 =  19;
+const int EFFECT_TRUETYPE_KNOCKDOWN                             =  20;
+const int EFFECT_TRUETYPE_DEAF                                  =  21;
+const int EFFECT_TRUETYPE_IMMUNITY                              =  22;
+const int EFFECT_TRUETYPE_SET_AI_STATE                          =  23;
+const int EFFECT_TRUETYPE_ENEMY_ATTACK_BONUS                    =  24;
+const int EFFECT_TRUETYPE_ARCANE_SPELL_FAILURE                  =  25;
+const int EFFECT_TRUETYPE_SAVING_THROW_INCREASE                 =  26;
+const int EFFECT_TRUETYPE_SAVING_THROW_DECREASE                 =  27;
+const int EFFECT_TRUETYPE_MOVEMENT_SPEED_INCREASE               =  28;
+const int EFFECT_TRUETYPE_MOVEMENT_SPEED_DECREASE               =  29;
+const int EFFECT_TRUETYPE_VISUALEFFECT                          =  30;
+const int EFFECT_TRUETYPE_AREA_OF_EFFECT                        =  31;
+const int EFFECT_TRUETYPE_BEAM                                  =  32;
+const int EFFECT_TRUETYPE_SPELL_RESISTANCE_INCREASE             =  33;
+const int EFFECT_TRUETYPE_SPELL_RESISTANCE_DECREASE             =  34;
+const int EFFECT_TRUETYPE_POISON                                =  35;
+const int EFFECT_TRUETYPE_ABILITY_INCREASE                      =  36;
+const int EFFECT_TRUETYPE_ABILITY_DECREASE                      =  37;
+const int EFFECT_TRUETYPE_DAMAGE                                =  38;
+const int EFFECT_TRUETYPE_HEAL                                  =  39;
+const int EFFECT_TRUETYPE_LINK                                  =  40;
+const int EFFECT_TRUETYPE_HASTE_INTERNAL                        =  41;
+const int EFFECT_TRUETYPE_SLOW_INTERNAL                         =  42;
+const int EFFECT_TRUETYPE_MODIFYNUMATTACKS                      =  44;
+const int EFFECT_TRUETYPE_CURSE                                 =  45;
+const int EFFECT_TRUETYPE_SILENCE                               =  46;
+const int EFFECT_TRUETYPE_INVISIBILITY                          =  47;
+const int EFFECT_TRUETYPE_AC_INCREASE                           =  48;
+const int EFFECT_TRUETYPE_AC_DECREASE                           =  49;
+const int EFFECT_TRUETYPE_SPELL_IMMUNITY                        =  50;
+const int EFFECT_TRUETYPE_DISPEL_ALL_MAGIC                      =  51;
+const int EFFECT_TRUETYPE_DISPEL_BEST_MAGIC                     =  52;
+const int EFFECT_TRUETYPE_TAUNT                                 =  53;
+const int EFFECT_TRUETYPE_LIGHT                                 =  54;
+const int EFFECT_TRUETYPE_SKILL_INCREASE                        =  55;
+const int EFFECT_TRUETYPE_SKILL_DECREASE                        =  56;
+const int EFFECT_TRUETYPE_HITPOINTCHANGEWHENDYING               =  57;
+const int EFFECT_TRUETYPE_SETWALKANIMATION                      =  58;
+const int EFFECT_TRUETYPE_LIMIT_MOVEMENT_SPEED                  =  59;
+const int EFFECT_TRUETYPE_DAMAGE_SHIELD                         =  61;
+const int EFFECT_TRUETYPE_POLYMORPH                             =  62;
+const int EFFECT_TRUETYPE_SANCTUARY                             =  63;
+const int EFFECT_TRUETYPE_TIMESTOP                              =  64;
+const int EFFECT_TRUETYPE_SPELL_LEVEL_ABSORPTION                =  65;
+const int EFFECT_TRUETYPE_ICON                                  =  67;
+const int EFFECT_TRUETYPE_RACIAL_TYPE                           =  68;
+const int EFFECT_TRUETYPE_VISION                                =  69;
+const int EFFECT_TRUETYPE_SEEINVISIBLE                          =  70;
+const int EFFECT_TRUETYPE_ULTRAVISION                           =  71;
+const int EFFECT_TRUETYPE_TRUESEEING                            =  72;
+const int EFFECT_TRUETYPE_BLINDNESS                             =  73;
+const int EFFECT_TRUETYPE_DARKNESS                              =  74;
+const int EFFECT_TRUETYPE_MISS_CHANCE                           =  75;
+const int EFFECT_TRUETYPE_CONCEALMENT                           =  76;
+const int EFFECT_TRUETYPE_TURN_RESISTANCE_INCREASE              =  77;
+const int EFFECT_TRUETYPE_BONUS_SPELL_OF_LEVEL                  =  78;
+const int EFFECT_TRUETYPE_DISAPPEARAPPEAR                       =  79;
+const int EFFECT_TRUETYPE_DISAPPEAR                             =  80;
+const int EFFECT_TRUETYPE_APPEAR                                =  81;
+const int EFFECT_TRUETYPE_NEGATIVE_LEVEL                        =  82;
+const int EFFECT_TRUETYPE_BONUS_FEAT                            =  83;
+const int EFFECT_TRUETYPE_WOUNDING                              =  84;
+const int EFFECT_TRUETYPE_SWARM                                 =  85;
+const int EFFECT_TRUETYPE_VAMPIRIC_REGENERATION                 =  86;
+const int EFFECT_TRUETYPE_DISARM                                =  87;
+const int EFFECT_TRUETYPE_TURN_RESISTANCE_DECREASE              =  88;
+const int EFFECT_TRUETYPE_BLINDNESS_INACTIVE                    =  89;
+const int EFFECT_TRUETYPE_PETRIFY                               =  90;
+const int EFFECT_TRUETYPE_ITEMPROPERTY                          =  91;
+const int EFFECT_TRUETYPE_SPELL_FAILURE                         =  92;
+const int EFFECT_TRUETYPE_CUTSCENEGHOST                         =  93;
+const int EFFECT_TRUETYPE_CUTSCENEIMMOBILE                      =  94;
+const int EFFECT_TRUETYPE_DEFENSIVESTANCE                       =  95;
+
+const int VARIABLE_TYPE_INT                     = 1;
+const int VARIABLE_TYPE_FLOAT                   = 2;
+const int VARIABLE_TYPE_STRING                  = 3;
+const int VARIABLE_TYPE_OBJECT                  = 4;
+const int VARIABLE_TYPE_LOCATION                = 5;
+
+const int AREA_TRANSITION_LINK_NONE       = 0;
+const int AREA_TRANSITION_LINK_DOOR       = 1;
+const int AREA_TRANSITION_LINK_WAYPOINT   = 2;
+
+const int SURFACE_MATERIAL_DIRT           = 1;
+const int SURFACE_MATERIAL_OBSCURING      = 2;
+const int SURFACE_MATERIAL_GRASS          = 3;
+const int SURFACE_MATERIAL_STONE          = 4;
+const int SURFACE_MATERIAL_WOOD           = 5;
+const int SURFACE_MATERIAL_WATER          = 6;
+const int SURFACE_MATERIAL_NOWALK         = 7;
+const int SURFACE_MATERIAL_TRANSPARENT    = 8;
+const int SURFACE_MATERIAL_CARPET         = 9;
+const int SURFACE_MATERIAL_METAL          = 10;
+const int SURFACE_MATERIAL_PUDDLES        = 11;
+const int SURFACE_MATERIAL_SWAMP          = 12;
+const int SURFACE_MATERIAL_MUD            = 13;
+const int SURFACE_MATERIAL_LEAVES         = 14;
+const int SURFACE_MATERIAL_LAVA           = 15;
+const int SURFACE_MATERIAL_BOTTOMLESSPIT  = 16;
+const int SURFACE_MATERIAL_DEEPWATER      = 17;
+const int SURFACE_MATERIAL_DOOR           = 18;
+const int SURFACE_MATERIAL_SNOW           = 19;
+const int SURFACE_MATERIAL_SAND           = 20;
+const int SURFACE_MATERIAL_BAREBONES      = 21;
+const int SURFACE_MATERIAL_STONEBRIDGE    = 22;
+const int SURFACE_MATERIAL_TRIGGER        = 30;
+
+const int NODE_TYPE_STARTING_NODE      = 0;
+const int NODE_TYPE_ENTRY_NODE         = 1;
+const int NODE_TYPE_REPLY_NODE         = 2;
+
+const int LANGUAGE_ENGLISH             = 0;
+const int LANGUAGE_FRENCH              = 1;
+const int LANGUAGE_GERMAN              = 2;
+const int LANGUAGE_ITALIAN             = 3;
+const int LANGUAGE_SPANISH             = 4;
+const int LANGUAGE_POLISH              = 5;
+const int LANGUAGE_KOREAN              = 128;
+const int LANGUAGE_CHINESE_TRADITIONAL = 129;
+const int LANGUAGE_CHINESE_SIMPLIFIED  = 130;
+const int LANGUAGE_JAPANESE            = 131;
+
+const int MOVEMENT_RATE_PC                      = 0;
+const int MOVEMENT_RATE_IMMOBILE                = 1;
+const int MOVEMENT_RATE_VERY_SLOW               = 2;
+const int MOVEMENT_RATE_SLOW                    = 3;
+const int MOVEMENT_RATE_NORMAL                  = 4;
+const int MOVEMENT_RATE_FAST                    = 5;
+const int MOVEMENT_RATE_VERY_FAST               = 6;
+const int MOVEMENT_RATE_DEFAULT                 = 7;
+const int MOVEMENT_RATE_DM_FAST                 = 8;
+
+const int QUICKBAR_TYPE_INVALID                             =   0;  // set/getquickslot: yes; Param#: 0
+const int QUICKBAR_TYPE_ITEM                            =   1;  // set/getquickslot: no
+const int QUICKBAR_TYPE_SPELL                           =   2;  // set/getquickslot: yes; Param#: 4; see struct quickslot_s;
+const int QUICKBAR_TYPE_PARRY                           =   3;  // set/getquickslot: yes; Param#: 1; iParam1 = 10
+const int QUICKBAR_TYPE_FEAT                            =   4;  // set/getquickslot: yes; Param#: 1; iParam1 = Feat id
+const int QUICKBAR_TYPE_TALKTO                          =   6;  // set/getquickslot: yes; Param#: 0
+const int QUICKBAR_TYPE_ATTACK                          =   7;  // set/getquickslot: yes; Param#: 0
+const int QUICKBAR_TYPE_EMOTE                           =   8;  // set/getquickslot: yes; Param#: 1; iParam1 = emote id
+const int QUICKBAR_TYPE_MODE                            =   10; // set/getquickslot: yes; Param#: 1; iParam1 = mode id
+const int QUICKBAR_TYPE_DM_CREATECREATURE               =   11; // set/getquickslot: no
+const int QUICKBAR_TYPE_DM_CREATEITEM                   =   12; // set/getquickslot: no
+const int QUICKBAR_TYPE_DM_CREATEENCOUNTER              =   13; // set/getquickslot: no
+const int QUICKBAR_TYPE_DM_CREATEWAYPOINT               =   14; // set/getquickslot: no
+const int QUICKBAR_TYPE_DM_CREATETRIGGER                =   15; // set/getquickslot: no
+const int QUICKBAR_TYPE_DM_CREATEPORTAL                 =   16; // set/getquickslot: no
+const int QUICKBAR_TYPE_DM_CREATEPLACEABLE              =   17; // set/getquickslot: no
+const int QUICKBAR_TYPE_MACRO                           =   18; // set/getquickslot: no
+const int QUICKBAR_TYPE_DM_TOGGLEINVULNERABLE           =   19; // set/getquickslot: yes; Param#: 0
+const int QUICKBAR_TYPE_DM_FORCEREST                    =   20; // set/getquickslot: yes; Param#: 0
+const int QUICKBAR_TYPE_DM_GOTO                         =   21; // set/getquickslot: yes; Param#: 0
+const int QUICKBAR_TYPE_DM_HEAL                         =   22; // set/getquickslot: yes; Param#: 0
+const int QUICKBAR_TYPE_DM_KILL                         =   23; // set/getquickslot: yes; Param#: 0
+const int QUICKBAR_TYPE_DM_TAKECONTROL                  =   24; // set/getquickslot: yes; Param#: 0
+const int QUICKBAR_TYPE_DM_TAKECONTROLFULLPOWERS        =   25; // set/getquickslot: yes; Param#: 0
+const int QUICKBAR_TYPE_DM_GIVEGOLD                     =   27; // set/getquickslot: yes; Param#: 1; iParam1 = gold amount
+const int QUICKBAR_TYPE_DM_TAKEGOLD                     =   28; // set/getquickslot: yes; Param#: 1; iParam1 = NEGATIVE gold amount
+const int QUICKBAR_TYPE_DM_GIVEITEM                     =   29; // set/getquickslot: no
+const int QUICKBAR_TYPE_DM_TAKEITEM                     =   30; // set/getquickslot: no
+const int QUICKBAR_TYPE_DM_GIVEXP                       =   31; // set/getquickslot: yes; Param#: 1; iParam1 = xp amount
+const int QUICKBAR_TYPE_DM_TAKEXP                       =   32; // set/getquickslot: yes; Param#: 1; iParam1 = NEGATIVE xp amount
+const int QUICKBAR_TYPE_DM_GIVELEVEL                    =   33; // set/getquickslot: yes; Param#: 1; iParam1 = number of levels
+const int QUICKBAR_TYPE_DM_TAKELEVEL                    =   34; // set/getquickslot: yes; Param#: 1; iParam1 = NEGATIVE number of levels
+const int QUICKBAR_TYPE_DM_LIMBO                        =   35; // set/getquickslot: yes; Param#: 0
+const int QUICKBAR_TYPE_DM_TOGGLEAI                     =   36; // set/getquickslot: yes; Param#: 0
+const int QUICKBAR_TYPE_POSSESSFAMILIAR                 =   38; // set/getquickslot: yes; Param#: 0
+const int QUICKBAR_TYPE_EXAMINE                         =   40; // set/getquickslot: yes; Param#: 0
+const int QUICKBAR_TYPE_BARTER                          =   41; // set/getquickslot: yes; Param#: 0
+const int QUICKBAR_TYPE_ASSOCIATECOMMAND                =   42; // set/getquickslot: yes; Param#: 1; iParam1 = command id
+const int QUICKBAR_TYPE_CANCELPOLYMORPH                 =   43; // ??
+const int QUICKBAR_TYPE_SPELLLIKEABILITY                =   44; // set/getquickslot: yes; Param#: 1; basically the same as spell
+const int QUICKBAR_TYPE_DM_SHIFTALIGNMENTGOOD           =   45; // set/getquickslot: yes; Param#: 1; iParam1 = amount to shift towards allignment
+const int QUICKBAR_TYPE_DM_SHIFTALIGNMENTEVIL           =   46; // set/getquickslot: yes; Param#: 1; iParam1 = amount to shift towards allignment
+const int QUICKBAR_TYPE_DM_SHIFTALIGNMENTLAWFUL         =   47; // set/getquickslot: yes; Param#: 1; iParam1 = amount to shift towards allignment
+const int QUICKBAR_TYPE_DM_SHIFTALIGNMENTCHAOTIC        =   48; // set/getquickslot: yes; Param#: 1; iParam1 = amount to shift towards allignment
+
+const int PARTY_EVENTTYPE_PARTY_INVITE = 9;
+const int PARTY_EVENTTYPE_PARTY_LEAVE = 6;
+const int PARTY_EVENTTYPE_PARTY_ACCEPT = 11;
+const int PARTY_EVENTTYPE_PARTY_REJECT = 12;
+const int PARTY_EVENTTYPE_PARTY_KICK = 7;
+const int PARTY_EVENTTYPE_PARTY_TRANSFER_LEADER = 8;
+const int PARTY_EVENTTYPE_AREA_ENTER = 2;
+
+const string SERVER_IP = "64.15.69.198";
+
+const int MOD_STRREF_ERROR = 2474;
+
+const int PLAYER_SERVER_ROLE_AREA_BUILDER =         0x00000001;
+const int PLAYER_SERVER_ROLE_RESOURCES_BUILDER =    0x00000002;
+const int PLAYER_SERVER_ROLE_SCRIPTER =             0x00000004;
+const int PLAYER_SERVER_ROLE_SCRIPTS_MANAGER =      0x00000008;
+const int PLAYER_SERVER_ROLE_DM =                   0x00000010;
+const int PLAYER_SERVER_ROLE_HEAD_BUILDER =         0x00000040;
+const int PLAYER_SERVER_ROLE_ADMIN =                0x00000080;
+
+//void main(){}
